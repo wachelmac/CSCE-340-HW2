@@ -9,6 +9,10 @@ The worst-fit heuristic is a simple rule that considers the file sizes in the or
 if the sound file won't fit on any disk, create a new disk; otherwise place the file on a disk that has the most remaining space. 
 o	For example, this algorithm would put the sizes 700,000, 800,000, 200,000, 150,000, 150,000 onto three disks: {700,000, 200,000}, {800,000, 150,000}, {150,000}. Note that this does not necessarily lead to the best solution since the five files could fit on two disks.  Your main task is to implement the worst-fit heuristic.
 
+Disk data type. 
+-------------------------
+First, implement a data type Disk.java that represents a 1GB disk, and contains a list of all of the files it is sorting. This data type should implement the Comparable<Disk> interface so that you can use it with a priority queue. 
+
 Priority queue ADT. 
 --------------------------
 You will need to develop an efficient data structure to support all of the basic operations to implement the heuristic. For the worst-fit heuristic, you will certainly need insert and delete the maximum. The priority queue MaxPQ.java (posted on Blackboard) is a judicious choice. 
