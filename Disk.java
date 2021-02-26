@@ -20,7 +20,7 @@ public class Disk implements Comparable<Disk> {
   }
   
   public boolean isFull(){
-    return SIZE-spaceRemaining==0;
+    return spaceRemaining==0;
   }
 }
 
