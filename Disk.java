@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Disk implements Comparable<Disk> {
   
-    final int SIZE=1000^2;//each disk has a capacity of 1GB or 1,000,000KB
+    final int SIZE=1000000;//each disk has a capacity of 1GB or 1,000,000KB
     private int inUse;//represents the amount of memory in use 
     ArrayList files;//files stored on the disk 
     
