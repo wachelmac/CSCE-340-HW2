@@ -6,11 +6,12 @@ public class Disk implements Comparable<Disk> {
   
     final int SIZE=1000000;//each disk has a capacity of 1GB or 1,000,000KB
     private int inUse;//represents the amount of memory in use 
-    ArrayList files;//files stored on the disk 
+    private int id; 
+    ArrayList files=new ArrayList();//files stored on the disk 
     
-    Disk(){
-        files=new ArrayList(SIZE);//is this how you use ArrayList? I don't know how to use ArrayList
+    Disk(int id){
         inUse=0;//upon creation, the disk is empty 
+        this.id=id;
     }
 	
     public int compareTo(Disk d){  
@@ -22,7 +23,7 @@ public class Disk implements Comparable<Disk> {
             return -1;  
     }
   
-    public boolean isFull(){//idk if this method is necessary but it seemed like a good thing to have just in case
+    public boolean isFull(){
         return inUse==SIZE;
     }
     
@@ -34,6 +35,14 @@ public class Disk implements Comparable<Disk> {
         inUse+=f;
         
         return files.add(f);  
-    } 
+    }
+    
+    public void printDisk(){
+        System.out.print(id+" "+(SIZE-inUse)+" :");
+        //System.out.println(files.size());
+        for(int i=0; i<files.size(); i++)
+            System.out.print(files.get(i)+" ");
+        System.out.println();
+    }
 }
 
