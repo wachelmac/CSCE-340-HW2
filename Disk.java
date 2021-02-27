@@ -38,7 +38,7 @@ public class Disk implements Comparable<Disk> {
     }
     
     public void printDisk(){
-        System.out.print(id+" "+(SIZE-inUse)+" :");
+        System.out.printf("\t %d %6d: ", id, SIZE-inUse);
         //System.out.println(files.size());
         for(int i=0; i<files.size(); i++)
             System.out.print(files.get(i)+" ");
