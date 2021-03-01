@@ -33,7 +33,7 @@ public class Disk implements Comparable<Disk> {
         if(isFull(f))
             return false;
         //if there is space, update space and add the new file to the list
-        space=f;
+        space+=f;
         
         return files.add(f);  
     }
