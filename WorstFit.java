@@ -22,31 +22,32 @@ public class WorstFit {
     
     private void doWorst(){
         addDisk();
+        Disk d; 
         int fileSize;//holds current value
         
         for(int i=0; i<files.length; i++){
             fileSize=files[i];
             boolean isSpace=false; 
-            
-            for(Disk d: disks){
+
+            for(int j=0; j<numDisks; j++){
+                d=disks.get(j);
                 if(!d.isFull(fileSize)){
-                    isSpace=true;//at least one disk has space for the file
+                    isSpace=true; 
                     break; 
                 }
-                
-                else{
+            }
+            if(!isSpace){
+                System.out.println("we need a new disk");
                     addDisk();//create new disk
                     assert disks.get(numDisks-1).addFile(fileSize);//add file to disk
-                }
-            }
-            
-            if(isSpace){
-                //create a priority queue 
-                MaxPQ<Disk> pq=new MaxPQ(disks.toArray());
-                Disk max= pq.max(); //find the disk with the most remaining space
-                assert max.addFile(fileSize); //add file to that disk
             }  
+            else{
+                MaxPQ<Disk> pq=new MaxPQ(disks.toArray());//create a priority queue 
+                Disk max= pq.max(); //find the disk with the most remaining space
+                max.addFile(fileSize);
+            }
         }
+        printFit();
     }
     
     private double sumFiles(){
