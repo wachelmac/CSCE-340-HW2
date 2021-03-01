@@ -2,19 +2,15 @@
 //George O'Malley
 
 import java.util.ArrayList;
-//import java.util.Collections;
 
 public class WorstFit {
     
     ArrayList<Disk> disks=new ArrayList<Disk>();
     int[] files;
     int numDisks;
-    int index;
     
     WorstFit(int[] f){
-        
         files=f;
-        addDisk();
         doWorst();
     }
     
@@ -25,9 +21,31 @@ public class WorstFit {
     }
     
     private void doWorst(){
+        addDisk();
+        int fileSize;//holds current value
         
         for(int i=0; i<files.length; i++){
-            //ALGORITHM GOES HERE
+            fileSize=files[i];
+            boolean isSpace=false; 
+            
+            for(Disk d: disks){
+                if(!d.isFull(fileSize)){
+                    isSpace=true;//at least one disk has space for the file
+                    break; 
+                }
+                
+                else{
+                    addDisk();//create new disk
+                    assert disks.get(numDisks-1).addFile(fileSize);//add file to disk
+                }
+            }
+            
+            if(isSpace){
+                //create a priority queue 
+                MaxPQ<Disk> pq=new MaxPQ(disks.toArray());
+                Disk max= pq.max(); //find the disk with the most remaining space
+                assert max.addFile(fileSize); //add file to that disk
+            }  
         }
     }
     
