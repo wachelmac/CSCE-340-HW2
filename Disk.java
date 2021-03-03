@@ -40,7 +40,6 @@ public class Disk implements Comparable<Disk> {
     
     public void printDisk(){
         System.out.printf("\t %d %6d:  ", id, space);
-        //System.out.println(files.size());
         for(int i=0; i<files.size(); i++)
             System.out.print(files.get(i)+" ");
         System.out.println();
