@@ -22,7 +22,7 @@ public class IntegerSorter {
 		PrintWriter output=new PrintWriter("integers.txt");
 
 		if (myList.size() == 0)
-			System.out.println("There are no values to print.");
+			return;
 
 		else{
 			partition(myList, 0, myList.size()-1);
