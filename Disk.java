@@ -3,13 +3,14 @@
 //Group 7
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Disk implements Comparable<Disk> {
   
-    final int SIZE=1000000;//each disk has a capacity of 1GB or 1,000,000KB
-    private int space; //remaining space on disk, Comparable variable 
-    private int id; //unique id associated with each disk
-    ArrayList files=new ArrayList();//files stored on the disk 
+    final int SIZE=1000000;				//each disk has a capacity of 1GB or 1,000,000KB
+    private int space; 					//remaining space on disk, Comparable variable 
+    private int id; 					//unique id associated with each disk
+    ArrayList<Integer> files=new ArrayList<Integer>();	//files stored on the disk 
     
     Disk(int id){
         //constructor initializes Disk object
@@ -41,6 +42,7 @@ public class Disk implements Comparable<Disk> {
     }
 
     public void printDisk(){
+    	Collections.sort(files, Collections.reverseOrder());
         //output disk metrics in the given format 
         System.out.printf("\t %d %6d:  ", id, space);
         for(int i=0; i<files.size(); i++)
@@ -48,4 +50,3 @@ public class Disk implements Comparable<Disk> {
         System.out.println();
     }
 }
-
