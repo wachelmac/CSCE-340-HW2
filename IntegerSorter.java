@@ -1,18 +1,37 @@
+//Rachel McMullan
+//George O'Malley
+//Group 7
+
 import java.util.ArrayList;
+import java.io.*;
 
 public class IntegerSorter {
-	ArrayList<Integer> myList = new ArrayList<Integer>();
-	public void read(ArrayList<Integer> arr) {
-		if (arr.size() == 0) {
-			System.out.println("Sorry but you must have at least one value stored in the array list in order to print.");
-			return;
+	
+	ArrayList<Integer> myList = new ArrayList<>();
+        
+        IntegerSorter(ArrayList<Integer> arr) throws IOException{
+            
+            myList=arr;
+            sort();
+        } 
+        
+	public void sort() throws IOException{
+            
+                PrintWriter output=new PrintWriter("integers.txt");
+            
+		if (myList.size() == 0)
+                    System.out.println("There are no values to print.");
+
+		else{
+                    partition(myList, 0, myList.size()-1);
+                
+                    for (int i = myList.size()-1; i >= 0; i--) {
+			output.println(myList.get(i));
+                        
 		}
-		partition(arr, 0, arr.size());
-		for (int i = arr.size(); i >= 0; i--) {
-			System.out.println(arr.get(i));
-		}
-		
-	}
+                output.close();
+            }
+        } 
 	private int partition(ArrayList<Integer> arr, int lo, int hi) {
 		int i = lo, j = hi+1;
 		
